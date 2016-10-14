@@ -11,12 +11,15 @@ public class OperationsController {
 
     Activity activity;
     DisplayService displayService;
+    OperationsService operationsService;
     Button clearButton;
+    Button addBinaryButton;
 
 
-    public OperationsController(Activity activity, DisplayService displayService) {
+    public OperationsController(Activity activity, DisplayService displayService, OperationsService operationsService) {
         this.activity = activity;
         this.displayService = displayService;
+        this.operationsService = operationsService;
 
         initializeComponents();
         configureListeners();
@@ -24,6 +27,7 @@ public class OperationsController {
 
     private void initializeComponents() {
         clearButton = (Button) activity.findViewById(R.id.cleanBinaryButton);
+        addBinaryButton = (Button) activity.findViewById(R.id.addBinaryButton);
     }
 
     private void configureListeners() {
@@ -33,5 +37,13 @@ public class OperationsController {
                 displayService.CleanDisplay();
             }
         });
+
+        addBinaryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                operationsService.AddBinary(displayService.GetBinaryNumber());
+            }
+        });
+
     }
 }

@@ -6,6 +6,7 @@ import com.danielyoshizawa.binarycalculator.app.BinaryKeyboard.BinaryKeyboardCon
 import com.danielyoshizawa.binarycalculator.app.Display.DisplayController;
 import com.danielyoshizawa.binarycalculator.app.Display.DisplayService;
 import com.danielyoshizawa.binarycalculator.app.OperationsKeyboard.OperationsController;
+import com.danielyoshizawa.binarycalculator.app.OperationsKeyboard.OperationsService;
 
 public class BinaryCalculator extends Activity {
 
@@ -13,6 +14,7 @@ public class BinaryCalculator extends Activity {
     BinaryKeyboardController binaryKeyboardController;
     DisplayController displayController;
     OperationsController operationsController;
+    OperationsService operationsService;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,8 +22,9 @@ public class BinaryCalculator extends Activity {
         setContentView(R.layout.activity_binary_calculator);
 
         displayService = new DisplayService();
+        operationsService = new OperationsService();
         binaryKeyboardController = new BinaryKeyboardController(this, displayService);
         displayController = new DisplayController(this, displayService);
-        operationsController = new OperationsController(this, displayService);
+        operationsController = new OperationsController(this, displayService, operationsService);
     }
 }

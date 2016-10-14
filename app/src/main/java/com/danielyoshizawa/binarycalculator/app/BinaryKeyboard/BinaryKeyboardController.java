@@ -30,14 +30,14 @@ public class BinaryKeyboardController {
         binaryButton0.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayService.AddNumber(0);
+                displayService.AddBinaryNumber(0);
             }
         });
 
         binaryButton1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                displayService.AddNumber(1);
+                displayService.AddBinaryNumber(1);
             }
         });
     }

@@ -7,9 +7,10 @@
 
     <TextView
         android:id="@+id/displayTextView"
-        android:text="@string/hello_world"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="200px"
+        android:textSize="17pt"
+        android:textColor="@color/black"/>
 
     <LinearLayout
             android:layout_width="wrap_content"
@@ -47,6 +48,13 @@
             <Button
                 android:id="@+id/cleanBinaryButton"
                 android:text="@string/cleanBinaryButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+            />
+
+            <Button
+                android:id="@+id/addBinaryButton"
+                android:text="@string/addBinaryButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
             />
