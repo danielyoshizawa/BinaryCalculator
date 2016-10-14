@@ -17,4 +17,9 @@ public class DisplayService extends DisplayEvents {
     public String GetText() {
         return displayText;
     }
+
+    public void CleanDisplay() {
+        displayText = "";
+        notifyEvents();
+    }
 }
