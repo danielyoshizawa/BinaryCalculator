@@ -7,6 +7,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
+import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.*;
 
@@ -16,18 +17,8 @@ public class OperationsServiceTest {
     @Before
     public void setUp() throws Exception {
         operationsService = new OperationsService();
-    }
-
-    @After
-    public void tearDown() throws Exception {
-        operationsService = null;
-    }
-
-    @Test
-    public void addBinary() throws Exception {
         Binary binary1 = new Binary();
         Binary binary2 = new Binary();
-        Binary binary3 = new Binary();
 
         binary1.AddDigit(1);
         binary1.AddDigit(0);
@@ -37,22 +28,52 @@ public class OperationsServiceTest {
         binary2.AddDigit(1);
         binary2.AddDigit(0);
 
+        operationsService.AddBinary(binary1);
+        operationsService.AddBinary(binary2);
+    }
+
+    @After
+    public void tearDown() throws Exception {
+        operationsService = null;
+    }
+
+    @Test
+    public void addBinary() throws Exception {
+
+        Binary binary3 = new Binary();
+
         binary3.AddDigit(0);
         binary3.AddDigit(1);
         binary3.AddDigit(1);
 
-        operationsService.AddBinary(binary1);
-        operationsService.AddBinary(binary2);
         operationsService.AddBinary(binary3);
 
         ArrayList<Binary> operands = operationsService.GetOperandsList();
 
-        assertEquals("Operand 1 =", operands.get(0).GetDecimal(), 5);
+        assertEquals("Operand 1 =", operands.get(2).GetDecimal(), 3);
     }
 
     @Test
-    public void sumBinaries() throws Exception {
+    public void sumThreeBinaries() throws Exception {
 
+        Binary binary3 = new Binary();
+
+        binary3.AddDigit(0);
+        binary3.AddDigit(1);
+        binary3.AddDigit(1);
+
+        operationsService.AddBinary(binary3);
+
+        String result = operationsService.SumBinaries();
+
+        assertEquals("Sum is wrong", result, "1110");
+    }
+
+    @Test
+    public void sumTwoBinaries() throws Exception {
+        String result = operationsService.SumBinaries();
+
+        assertEquals("Sum is wrong", result, "1011");
     }
 
 }

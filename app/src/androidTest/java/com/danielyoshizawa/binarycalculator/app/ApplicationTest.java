@@ -11,6 +11,3 @@ public class ApplicationTest extends ApplicationTestCase<Application> {
         super(Application.class);
     }
 }
-
-// TODO : Create Tests for the display change event
-// TODO : Create Tests for Operations
