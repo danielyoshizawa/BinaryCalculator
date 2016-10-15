@@ -6,16 +6,13 @@ import com.danielyoshizawa.binarycalculator.app.R;
 
 public class DisplayController implements DisplayEventsListeners{
 
-
     TextView displayTextView;
     DisplayService displayService;
 
     public DisplayController(Activity activity, DisplayService displayService) {
 
-        displayTextView = (TextView) activity.findViewById(R.id.displayTextView);
-        displayTextView.setText("Controller");
-
         this.displayService = displayService;
+        displayTextView = (TextView) activity.findViewById(R.id.displayTextView);
 
         displayService.addListener(this);
 

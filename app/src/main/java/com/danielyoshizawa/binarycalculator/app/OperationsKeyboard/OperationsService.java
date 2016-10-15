@@ -1,5 +1,6 @@
 package com.danielyoshizawa.binarycalculator.app.OperationsKeyboard;
 
+import android.util.Log;
 import com.danielyoshizawa.binarycalculator.app.Entities.Binary;
 
 import java.util.ArrayList;
@@ -16,13 +17,21 @@ public class OperationsService {
         operands.add(binary);
     }
 
-    public Binary SumBinaries() {
-        Binary result = new Binary();
+    // TODO : Implement the algorithm
+    public String SumBinaries() {
+        int result = 0;
+
+        Log.i("SUM_BINARIES", "Outside For Each");
+        Log.i("SUM_BINARIES", Integer.toString(operands.size()));
 
         for (Binary b: operands) {
-
+            result += Integer.parseInt(b.GetDecimalString());
+            Log.i("SUM_BINARIES", b.GetDecimalString());
         }
 
-        return result;
+        operands.clear();
+        Log.i("SUM_BINARIES", Integer.toString(result));
+
+        return Integer.toBinaryString(result);
     }
 }

@@ -21,20 +21,32 @@ public class DisplayService extends DisplayEvents {
     public String GetText() {
         displayText = "";
 
-        for (int number : binaryNumber.GetBinaryList()) {
-            displayText += Integer.toString(number);
-        }
+        binaryToString();
 
         return displayText;
     }
 
     public void CleanDisplay() {
         displayText = "";
-        binaryNumber.Clear();
+        //binaryNumber.Clear();
+        binaryNumber = new Binary();
         notifyEvents();
     }
 
     public Binary GetBinaryNumber() {
-        return binaryNumber;
+        return new Binary(binaryNumber);
+    }
+
+    public void ShowBinaryValue(Binary binary) {
+        binaryNumber = binary;
+        binaryToString();
+        notifyEvents();
+
+    }
+
+    private void binaryToString() {
+        for (int number : binaryNumber.GetBinaryList()) {
+            displayText += Integer.toString(number);
+        }
     }
 }

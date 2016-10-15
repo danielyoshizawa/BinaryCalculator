@@ -5,4 +5,5 @@
     <string name="binaryButtonText0">0</string>
     <string name="cleanBinaryButton">CLR</string>
     <string name="addBinaryButton">+</string>
+    <string name="equalButton">=</string>
 </resources>

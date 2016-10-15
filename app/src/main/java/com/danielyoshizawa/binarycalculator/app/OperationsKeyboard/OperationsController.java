@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.view.View;
 import android.widget.Button;
 import com.danielyoshizawa.binarycalculator.app.Display.DisplayService;
+import com.danielyoshizawa.binarycalculator.app.Entities.Binary;
 import com.danielyoshizawa.binarycalculator.app.R;
 
 public class OperationsController {
@@ -14,7 +15,7 @@ public class OperationsController {
     OperationsService operationsService;
     Button clearButton;
     Button addBinaryButton;
-
+    Button equalButton;
 
     public OperationsController(Activity activity, DisplayService displayService, OperationsService operationsService) {
         this.activity = activity;
@@ -28,6 +29,7 @@ public class OperationsController {
     private void initializeComponents() {
         clearButton = (Button) activity.findViewById(R.id.cleanBinaryButton);
         addBinaryButton = (Button) activity.findViewById(R.id.addBinaryButton);
+        equalButton = (Button) activity.findViewById(R.id.equalButton);
     }
 
     private void configureListeners() {
@@ -42,6 +44,20 @@ public class OperationsController {
             @Override
             public void onClick(View v) {
                 operationsService.AddBinary(displayService.GetBinaryNumber());
+                displayService.CleanDisplay();
+            }
+        });
+
+        equalButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Binary binary = new Binary();
+
+                operationsService.AddBinary(displayService.GetBinaryNumber());
+                displayService.CleanDisplay();
+                binary.SetValueFromString(operationsService.SumBinaries());
+
+                displayService.ShowBinaryValue(binary);
             }
         });
 

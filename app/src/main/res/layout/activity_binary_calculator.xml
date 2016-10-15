@@ -7,10 +7,11 @@
 
     <TextView
         android:id="@+id/displayTextView"
-        android:layout_width="wrap_content"
-        android:layout_height="200px"
+        android:layout_width="match_parent"
+        android:layout_height="400px"
         android:textSize="17pt"
-        android:textColor="@color/black"/>
+        android:textColor="@color/black"
+        android:gravity="end"/>
 
     <LinearLayout
             android:layout_width="wrap_content"
@@ -59,6 +60,12 @@
                 android:layout_height="wrap_content"
             />
 
+            <Button
+                android:id="@+id/equalButton"
+                android:text="@string/equalButton"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+            />
 
         </GridLayout>
     </LinearLayout>
