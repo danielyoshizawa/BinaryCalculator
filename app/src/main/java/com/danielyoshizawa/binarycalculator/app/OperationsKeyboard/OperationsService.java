@@ -21,9 +21,6 @@ public class OperationsService {
     public String SumBinaries() {
         int result = 0;
 
-        Log.i("SUM_BINARIES", "Outside For Each");
-        Log.i("SUM_BINARIES", Integer.toString(operands.size()));
-
         for (Binary b: operands) {
             result += Integer.parseInt(b.GetDecimalString());
             Log.i("SUM_BINARIES", b.GetDecimalString());
@@ -33,5 +30,9 @@ public class OperationsService {
         Log.i("SUM_BINARIES", Integer.toString(result));
 
         return Integer.toBinaryString(result);
+    }
+
+    public ArrayList<Binary> GetOperandsList() {
+        return operands;
     }
 }

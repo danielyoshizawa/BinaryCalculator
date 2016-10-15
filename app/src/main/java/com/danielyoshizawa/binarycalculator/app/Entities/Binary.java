@@ -52,4 +52,8 @@ public class Binary {
             binaryList.add(Integer.parseInt(value.substring(i, i+1)));
         }
     }
+
+    public int GetDecimal() {
+        return Integer.parseInt(GetDecimalString());
+    }
 }
