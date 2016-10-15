@@ -1,7 +1,5 @@
 package com.danielyoshizawa.binarycalculator.app.Entities;
 
-import android.util.Log;
-
 import java.util.ArrayList;
 
 public class Binary {
@@ -34,9 +32,7 @@ public class Binary {
     public String GetDecimalString() {
         value = "";
 
-        for (Integer i: binaryList) {
-            value += i.toString();
-        }
+        convertBinaryToString();
 
         return Integer.toString(Integer.parseInt(value, 2));
     }
@@ -52,5 +48,17 @@ public class Binary {
 
     public int GetDecimal() {
         return Integer.parseInt(GetDecimalString());
+    }
+
+    public String GetString() {
+        convertBinaryToString();
+        return value;
+    }
+
+    // TODO : Create a Helper or something, I think I use something like this in another place
+    private void convertBinaryToString() {
+        for (Integer i: binaryList) {
+            value += i.toString();
+        }
     }
 }
