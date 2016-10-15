@@ -17,17 +17,14 @@ public class OperationsService {
         operands.add(binary);
     }
 
-    // TODO : Implement the algorithm
     public String SumBinaries() {
         int result = 0;
 
         for (Binary b: operands) {
             result += Integer.parseInt(b.GetDecimalString());
-            Log.i("SUM_BINARIES", b.GetDecimalString());
         }
 
         operands.clear();
-        Log.i("SUM_BINARIES", Integer.toString(result));
 
         return Integer.toBinaryString(result);
     }

@@ -41,7 +41,6 @@ public class DisplayService extends DisplayEvents {
         binaryNumber = binary;
         binaryToString();
         notifyEvents();
-
     }
 
     private void binaryToString() {

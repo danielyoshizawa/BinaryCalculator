@@ -38,9 +38,6 @@ public class Binary {
             value += i.toString();
         }
 
-        Log.i("SUM_BINARIES", "GetDecimalString : " + value);
-        Log.i("SUM_BINARIES", "GetDecimalString : " + Integer.parseInt(value, 2));
-
         return Integer.toString(Integer.parseInt(value, 2));
     }
 
