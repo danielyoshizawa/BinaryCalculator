@@ -7,7 +7,6 @@ import org.junit.Before;
 import org.junit.Test;
 
 import java.util.ArrayList;
-import java.util.concurrent.ExecutionException;
 
 import static org.junit.Assert.*;
 
@@ -50,7 +49,7 @@ public class OperationsServiceTest {
 
         ArrayList<Binary> operands = operationsService.GetOperandsList();
 
-        assertEquals("Operand 1 =", operands.get(2).GetDecimal(), 3);
+        assertEquals("Operand 1 !=", operands.get(2).GetDecimal(), 3);
     }
 
     @Test
@@ -74,6 +73,18 @@ public class OperationsServiceTest {
         String result = operationsService.SumBinaries();
 
         assertEquals("Sum is wrong", result, "1011");
+    }
+
+    public void minusTwoBinaries() throws Exception {
+        operationsService.RemoveBinaryAt(1);
+
+        Binary binary = new Binary("11");
+
+        operationsService.AddBinary(binary);
+
+        String result = operationsService.SubtractBinaries();
+
+        assertEquals("101 - 11 is not 10", result, "10");
     }
 
 }

@@ -16,6 +16,7 @@ public class OperationsController {
     Button clearButton;
     Button addBinaryButton;
     Button equalButton;
+    Button minusBinaryButton;
 
     public OperationsController(Activity activity, DisplayService displayService, OperationsService operationsService) {
         this.activity = activity;
@@ -30,8 +31,10 @@ public class OperationsController {
         clearButton = (Button) activity.findViewById(R.id.cleanBinaryButton);
         addBinaryButton = (Button) activity.findViewById(R.id.addBinaryButton);
         equalButton = (Button) activity.findViewById(R.id.equalButton);
+        minusBinaryButton = (Button) activity.findViewById(R.id.minusBinaryButton);
     }
 
+    // TODO : Think if is necessary one class per listener
     private void configureListeners() {
         clearButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -39,12 +42,15 @@ public class OperationsController {
                 displayService.CleanDisplay();
             }
         });
-
+        // TODO : Refactor this, it is pretty odd
         addBinaryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 operationsService.AddBinary(displayService.GetBinaryNumber());
                 displayService.CleanDisplay();
+                Binary binary = new Binary(operationsService.SumBinaries());
+                operationsService.CleanOperands();
+                operationsService.AddBinary(binary);
             }
         });
 
@@ -55,9 +61,27 @@ public class OperationsController {
 
                 operationsService.AddBinary(displayService.GetBinaryNumber());
                 displayService.CleanDisplay();
-                binary.SetValueFromString(operationsService.SumBinaries());
+
+                if (operationsService.isAdd)
+                    binary.SetValueFromString(operationsService.SumBinaries());
+                else
+                    binary.SetValueFromString(operationsService.SubtractBinaries());
+
+                operationsService.CleanOperands();
 
                 displayService.ShowBinaryValue(binary);
+            }
+        });
+
+        minusBinaryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                operationsService.AddBinary(displayService.GetBinaryNumber());
+                displayService.CleanDisplay();
+                Binary binary = new Binary(operationsService.SubtractBinaries());
+                operationsService.CleanOperands();
+                operationsService.AddBinary(binary);
+
             }
         });
 

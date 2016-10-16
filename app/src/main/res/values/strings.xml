@@ -6,4 +6,5 @@
     <string name="cleanBinaryButton">CLR</string>
     <string name="addBinaryButton">+</string>
     <string name="equalButton">=</string>
+    <string name="minusBinaryButton">-</string>
 </resources>

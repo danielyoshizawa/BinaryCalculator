@@ -16,6 +16,10 @@ public class Binary {
         value = GetDecimalString();
     }
 
+    public Binary(String binaryString) {
+        this.SetValueFromString(binaryString);
+    }
+
     public void AddDigit(int number) {
         binaryList.add(number);
     }
